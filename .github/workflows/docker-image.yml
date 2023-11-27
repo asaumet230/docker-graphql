@@ -26,6 +26,14 @@ jobs:
         echo "Init Login"
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         echo "Login Finished"
+
+    - name: Build Docker Image
+      run: |
+        docker build -t asaumet230/docker-graphql:0.0.1 .
+        
+    - name: Push Docker Image
+      run: |
+        docker push asaumet230/docker-graphql:0.0.1
       
    # - name: Build the Docker image
     #  run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
